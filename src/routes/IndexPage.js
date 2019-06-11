@@ -13,6 +13,7 @@ function IndexPage() {
       </ul>
     </div>
   );
+  
 }
 
 IndexPage.propTypes = {
