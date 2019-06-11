@@ -121,7 +121,6 @@ class CustomerPage extends React.Component{
             </div>
         )
     }
-
 }
 
 export default CustomerPage;
