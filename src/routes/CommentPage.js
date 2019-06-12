@@ -18,6 +18,7 @@ class CommentPage extends React.Component{
     componentDidMount(){
         this.reloadData();
     }
+    //查询所有
     reloadData(){
         this.setState({loading:true});
         axios.get("/comment/findAll")
@@ -74,7 +75,7 @@ class CommentPage extends React.Component{
             title:'评价时间',
             dataIndex:'comment_time'
         },{
-            title:'顾客id',
+            title:'订单号',
             dataIndex:'order_id'
         },
         {
