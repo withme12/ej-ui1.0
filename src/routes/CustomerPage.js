@@ -34,7 +34,7 @@ class CustomerPage extends React.Component{
             title:'确定要删除这些记录吗？',
             content:'删除后数据将无法恢复',
             onOk:()=>{
-                axios.get("/customer/BatchDelete",{ids:this.state.ids})
+                axios.post("/customer/batchDelete",{ids:this.state.ids})
                 .then((result)=>{
                     message.success(result.statusText);
                     this.reloadData();
