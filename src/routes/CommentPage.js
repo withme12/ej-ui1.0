@@ -143,7 +143,7 @@ class CommentPage extends React.Component{
 
         return (
             <div className={styles.comment}>
-                <div className ={styles.title}> 顾客管理</div>
+                <div className ={styles.title}> 顾客评价管理</div>
                 <div className ={styles.btns}>
                     <Button onClick={this.toAdd.bind(this)}>添加</Button>&nbsp;
                     <Button onClick={this.handleBatchDelete.bind(this)}>批量删除</Button>&nbsp;

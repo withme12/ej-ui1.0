@@ -114,6 +114,9 @@ class CustomerPage extends React.Component{
         },{
             title:'状态',
             dataIndex:'status'
+        },{
+            title:'头像',
+            dataIndex:'photo'
         },
         {
             title:'操作',
