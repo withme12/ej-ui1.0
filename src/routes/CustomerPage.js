@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './CustomerPage.css'
 import {Modal,Button,Table,message} from 'antd'
 import axios from  '../utils/axios'
-import CustomerForm from './CustomerForm'
+import CustomerForm from './CustomerForm.js'
 
 
 //组件类必须继承React.Component
@@ -48,7 +48,7 @@ class CustomerPage extends React.Component{
     handleDelete(id){
         Modal.confirm({
             title:'确定要删除这条记录吗？',
-            content:'删除后数据将无法修复',
+            content:'删除后数据将无法恢复',
             onOk:()=>{
                 axios.get("/customer/deleteCustomerById",{
                     params:{
@@ -62,43 +62,38 @@ class CustomerPage extends React.Component{
             }
         });
     }
-    // 取消按钮的事件处理函数
+    // 取消按钮
     handleCancel = () => {
         this.setState({ visible: false });
     };
-    // 确认按钮的事件处理函数
+    // 确认按钮
     handleCreate = () => {
         const form = this.formRef.props.form;
         form.validateFields((err, values) => {
         if (err) {
             return;
         }
-        // 表单校验完成后与后台通信进行保存
+        // 表单校验
         axios.post("/customer/insertOrUpdate",values)
         .then((result)=>{
             message.success(result.statusText)
-            // 重置表单
             form.resetFields();
-            // 关闭模态框
             this.setState({ visible: false });
             this.reloadData();
         })
         
         });
     };
-        // 将子组件的引用在父组件中进行保存，方便后期调用
     saveFormRef = formRef => {
         this.formRef = formRef;
     };
-    // 去添加
+    // 添加
     toAdd(){
-        this.setState({customer:{},visible:true})   // 将默认值置空,模态框打开
+        this.setState({customer:{},visible:true})  
     }
-    // 去更新
+    // 更新
     toEdit(record){
-        // 更前先先把要更新的数据设置到state中
         this.setState({customer:record})
-        // 将record值绑定表单中
         this.setState({visible:true})
     }
     render(){
