@@ -111,7 +111,8 @@ class CommentPage extends React.Component{
             dataIndex:'content'
         },{
             title:'评价时间',
-            dataIndex:'commentTime'
+            dataIndex:'commentTime',
+            sorter:(a,b)=>a.commentTime-b.commentTime
         },{
             title:'订单号',
             dataIndex:'orderId'

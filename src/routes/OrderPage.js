@@ -121,7 +121,8 @@ class OrderPage extends React.Component {
     // 变量定义
     let columns = [{
       title:'下单时间',
-      dataIndex:'orderTime'
+      dataIndex:'orderTime',
+      sorter:(a,b)=>a.orderTime-b.orderTime
     },{
       title:'数目',
       dataIndex:'total'

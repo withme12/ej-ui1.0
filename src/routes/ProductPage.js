@@ -115,7 +115,8 @@ class ProductPage extends React.Component {
       dataIndex:'description'
     },{
       title:'价格',
-      dataIndex:'price'
+      dataIndex:'price',
+      sorter:(a,b)=>a.price-b.price
     },{
       title:'状态',
       dataIndex:'status'
