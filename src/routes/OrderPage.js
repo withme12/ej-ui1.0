@@ -4,7 +4,7 @@ import styles from './OrderPage.css'
 // 导入组件
 import {Modal,Button, Table,message} from 'antd'
 import axios from '../utils/axios'
-import OrderForm from './OrderForm'
+import OrderForm from './OrderForm.js'
 
 
 // 组件类必须要继承React.Component，是一个模块，顾客管理子功能
@@ -124,7 +124,7 @@ class OrderPage extends React.Component {
       dataIndex:'orderTime',
       sorter:(a,b)=>a.orderTime-b.orderTime
     },{
-      title:'数目',
+      title:'总价',
       dataIndex:'total'
     },{
       title:'操作',

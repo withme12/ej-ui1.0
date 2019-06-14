@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './CommentPage.css'
-import {Modal,Button,Table,message} from 'antd'
+import {Modal,Button,Table,message,Icon} from 'antd'
 import axios from  '../utils/axios'
 import CommentForm from './CommentForm'
 
@@ -124,8 +124,10 @@ class CommentPage extends React.Component{
             render:(text,record)=>{
                 return (
                     <div>
-                        <Button type ='link' size="small" onClick={this.handleDelete.bind(this,record.id)}>删除</Button>
-                        <Button type ='link' size="small" onClick={this.toEdit.bind(this,record)}>修改</Button>
+                        {/* <Button type ='link' size="small" onClick={this.handleDelete.bind(this,record.id)}>删除</Button> */}
+                        {/* <Button type ='link' size="small" onClick={this.toEdit.bind(this,record)}>修改</Button> */}
+                        <Icon type="delete" theme="twoTone"  onClick={this.handleDelete.bind(this,record.id)}/>&nbsp;&nbsp;&nbsp;&nbsp;                        
+                        <Icon type="edit" theme="twoTone" onClick={this.toEdit.bind(this,record)}/>
                     </div>
                 )
             }
@@ -146,7 +148,7 @@ class CommentPage extends React.Component{
             <div className={styles.comment}>
                 <div className ={styles.title}> 顾客评价管理</div>
                 <div className ={styles.btns}>
-                    <Button onClick={this.toAdd.bind(this)}>添加</Button>&nbsp;
+                &nbsp;&nbsp;<Icon type="plus-circle" theme="twoTone" style={{ fontSize: '20px' }}  onClick={this.toAdd.bind(this)}/>&nbsp;&nbsp;&nbsp;&nbsp;
                     <Button onClick={this.handleBatchDelete.bind(this)}>批量删除</Button>&nbsp;
                     <Button type="link">导出</Button>
                 </div>

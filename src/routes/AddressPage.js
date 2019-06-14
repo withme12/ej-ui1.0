@@ -2,7 +2,7 @@ import React from 'react';
 // 引入css进行页面美化
 import styles from './CustomerPage.css'
 // 导入组件
-import {Modal,Button, Table,message} from 'antd'
+import {Modal,Button, Table,message,Icon} from 'antd'
 import axios from '../utils/axios'
 import AddressForm from './AddressForm'
 
@@ -143,8 +143,10 @@ class AddressPage extends React.Component {
       render:(text,record)=>{
         return (
           <div>
-            <Button type='link' size="small" onClick={this.handleDelete.bind(this,record.id)}>删除</Button>
-            <Button type='link' size="small" onClick={this.toEdit.bind(this,record)}>修改</Button>
+            {/* <Button type='link' size="small" onClick={this.handleDelete.bind(this,record.id)}>删除</Button>
+            <Button type='link' size="small" onClick={this.toEdit.bind(this,record)}>修改</Button> */}
+            <Icon type="delete" theme="twoTone"  onClick={this.handleDelete.bind(this,record.id)}/>&nbsp;&nbsp;&nbsp;&nbsp;                        
+            <Icon type="edit" theme="twoTone" onClick={this.toEdit.bind(this,record)}/>
           </div>
         )
       }
