@@ -1,7 +1,7 @@
 import React from 'react';
 import {Form,Modal,Input} from 'antd'
 
-class CustomerForm extends React.Component {
+class ProductForm extends React.Component {
 
   render(){
     const formLayout = {
@@ -19,31 +19,36 @@ class CustomerForm extends React.Component {
     const { getFieldDecorator } = form;
     // 双向数据绑定
     getFieldDecorator("id");
-    getFieldDecorator("status");
     getFieldDecorator("photo");
+    getFieldDecorator("status");
     return (
       <Modal
           visible={visible}
-          title="添加顾客信息"
+          title="产品信息"
           okText="提交"
           onCancel={onCancel}
           onOk={onCreate}
         >
           <Form layout="vertical" {...formLayout}>
-            <Form.Item label="姓名" >
-              {getFieldDecorator('realname', {
-                rules: [{ required: true, message: '请输入姓名!' }],
+            <Form.Item label="名称" >
+              {getFieldDecorator('name', {
+                rules: [{ required: true, message: '请输入产品名称!' }],
               })(<Input />)}
             </Form.Item>
-            <Form.Item label="手机号" >
-              {getFieldDecorator('telephone', {
-                rules: [{ required: true, message: '请输入手机号!' }],
+            <Form.Item label="描述" >
+              {getFieldDecorator('description', {
+                rules: [{ required: true, message: '请输入产品描述!' }],
               })(<Input />)}
             </Form.Item>
-            <Form.Item label="密码">
-              {getFieldDecorator('password', {
-                rules: [{ required: true, message: '请输入密码!' }],
-              })(<Input.Password />)}
+            <Form.Item label="价格">
+              {getFieldDecorator('price', {
+                rules: [{ required: true, message: '请输入产品价格!' }],
+              })(<Input />)}
+            </Form.Item>
+            <Form.Item label="所属类别">
+              {getFieldDecorator('categoryId', {
+                rules: [{ required: true, message: '请输入产品所属类别!' }],
+              })(<Input />)}
             </Form.Item>
            
           </Form>
@@ -51,6 +56,7 @@ class CustomerForm extends React.Component {
     );
   }
 }
+// 将通过props从父组件中获取的值拿出来设置到表单元素上
 const mapPropsToFields = (props)=>{
   let obj = {};
   for(let key in props.initData){
@@ -62,4 +68,4 @@ const mapPropsToFields = (props)=>{
 
 export default Form.create({
   mapPropsToFields
-})(CustomerForm);
+})(ProductForm);

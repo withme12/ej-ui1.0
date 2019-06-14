@@ -1,7 +1,7 @@
 import React from 'react';
 import {Form,Modal,Input} from 'antd'
 
-class CustomerForm extends React.Component {
+class CategoryForm extends React.Component {
 
   render(){
     const formLayout = {
@@ -18,32 +18,26 @@ class CustomerForm extends React.Component {
     const { visible, onCancel, onCreate, form } = this.props;
     const { getFieldDecorator } = form;
     // 双向数据绑定
-    getFieldDecorator("id");
-    getFieldDecorator("status");
-    getFieldDecorator("photo");
+    getFieldDecorator("id")
+
     return (
       <Modal
           visible={visible}
-          title="添加顾客信息"
+          title="添加服务类别"
           okText="提交"
           onCancel={onCancel}
           onOk={onCreate}
         >
           <Form layout="vertical" {...formLayout}>
-            <Form.Item label="姓名" >
-              {getFieldDecorator('realname', {
-                rules: [{ required: true, message: '请输入姓名!' }],
+            <Form.Item label="类别名称" >
+              {getFieldDecorator('name', {
+                rules: [{ required: true, message: '请输入服务类别名称!' }],
               })(<Input />)}
             </Form.Item>
-            <Form.Item label="手机号" >
-              {getFieldDecorator('telephone', {
-                rules: [{ required: true, message: '请输入手机号!' }],
+            <Form.Item label="所属类别ID" >
+              {getFieldDecorator('parentId', {
+                rules: [{ required: true, message: '请输入所属类别!' }],
               })(<Input />)}
-            </Form.Item>
-            <Form.Item label="密码">
-              {getFieldDecorator('password', {
-                rules: [{ required: true, message: '请输入密码!' }],
-              })(<Input.Password />)}
             </Form.Item>
            
           </Form>
@@ -62,4 +56,4 @@ const mapPropsToFields = (props)=>{
 
 export default Form.create({
   mapPropsToFields
-})(CustomerForm);
+})(CategoryForm);
