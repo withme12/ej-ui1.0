@@ -1,8 +1,9 @@
 import React from 'react';
 // 引入css进行页面美化
 import styles from './OrderPage.css'
+
 // 导入组件
-import {Modal,Button, Table,message} from 'antd'
+import {Modal,Button, Table,message,Icon} from 'antd'
 import axios from '../utils/axios'
 import OrderForm from './OrderForm.js'
 
@@ -116,6 +117,14 @@ class OrderPage extends React.Component {
     this.setState({visible:true})
   }
 
+
+  toDetails(record){
+    this.setState({order:record})
+   console.log(record);
+   this.props.history.push("/orderDetails")
+  
+ 
+}
   // 组件类务必要重写的方法，表示页面渲染
   render(){
     // 变量定义
@@ -133,8 +142,9 @@ class OrderPage extends React.Component {
       render:(text,record)=>{
         return (
           <div>
-            <Button type='link' size="small" onClick={this.handleDelete.bind(this,record.id)}>删除</Button>
-            <Button type='link' size="small" onClick={this.toEdit.bind(this,record)}>修改</Button>
+             <Icon type="delete" theme="twoTone"  onClick={this.handleDelete.bind(this,record.id)}/>&nbsp;&nbsp;&nbsp;&nbsp;                        
+                        <Icon type="edit" theme="twoTone" onClick={this.toEdit.bind(this,record)}/>
+            <Button type='link' size="small" onClick={this.toDetails.bind(this,record)}>详情</Button>
           </div>
         )
       }

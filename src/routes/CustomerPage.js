@@ -96,6 +96,13 @@ class CustomerPage extends React.Component{
         this.setState({customer:record})
         this.setState({visible:true})
     }
+    toDetails(record){
+         this.setState({customer:record})
+        console.log(record);
+        this.props.history.push("/customerDetails")
+       
+      
+    }
     render(){
         let columns=[{
             title:'id',
@@ -124,6 +131,7 @@ class CustomerPage extends React.Component{
                         <Button type ='link' size="small" onClick={this.toEdit.bind(this,record)}>修改</Button> */}
                         <Icon type="delete" theme="twoTone"  onClick={this.handleDelete.bind(this,record.id)}/>&nbsp;&nbsp;&nbsp;&nbsp;                        
                         <Icon type="edit" theme="twoTone" onClick={this.toEdit.bind(this,record)}/>
+                        <Button type='link' size="small" onClick={this.toDetails.bind(this,record)}>详情</Button>
                     </div>
                 )
             }

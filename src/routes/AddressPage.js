@@ -15,7 +15,6 @@ class AddressPage extends React.Component {
     this.state = {
       ids:[], // 批量删除的时候保存的id
       list:[],
-      loading:false,
       visible:false,
       customer:{}
     }
@@ -167,7 +166,7 @@ class AddressPage extends React.Component {
     // 返回结果 jsx(js + xml)
     return (
       <div className={styles.customer}>
-        <div className={styles.title}>顾客管理</div>
+        <div className={styles.title}>地址管理</div>
         <div className={styles.btns}>
           <Button onClick={this.toAdd.bind(this)}>添加</Button> &nbsp;
           <Button onClick={this.handleBatchDelete.bind(this)}>批量删除</Button> &nbsp;
@@ -186,6 +185,7 @@ class AddressPage extends React.Component {
           initData={this.state.customer}
           wrappedComponentRef={this.saveFormRef}
           visible={this.state.visible}
+
           onCancel={this.handleCancel}
           onCreate={this.handleCreate}/>
       </div>

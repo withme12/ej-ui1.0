@@ -14,7 +14,7 @@ class ProductPage extends React.Component {
       list:[],
       loading:false,
       visible:false,
-      product:{}
+      product:{}   
     }
   }
   componentDidMount(){
