@@ -14,6 +14,7 @@ import {Layout,Menu,Breadcrumb,Icon}from 'antd'
 import CustomerDetails from './routes/CustomerDetails'
 import WaiterDetails from './routes/WaiterDetails'
 import  OrderDetails from './routes/OrderDetails'
+
 function RouterConfig({ history }) {
   const {Content,Sider,Header}=Layout;
   const {SubMenu}=Menu;
@@ -33,29 +34,45 @@ function RouterConfig({ history }) {
                 defaultOpenKeys={['sub1']}
                 style={{ height: '100%', borderRight: 0,background: '#FFCBB3',color:'#00EC00' }}
               >
-                <Menu.Item key="1">
-                  <Icon type="pie-chart" />
-                  <span>
-                    <Link to="/customer">顾客管理</Link>
-                  </span>
+                <Menu.Item key="1" >
+                  <Link to="/customer">
+                    <Icon type="pie-chart" />
+                    <span>
+                      顾客管理
+                    </span>
+                  </Link>
                 </Menu.Item>
-                <Menu.Item key="2">
-                  <Icon type="desktop" />
-                  <span>
-                    <Link to="/order">订单管理</Link>
-                  </span>
+                <Menu.Item key="2" >
+                  <Link to="/product">
+                    <Icon type="pie-chart" />
+                    <span>
+                      产品管理
+                    </span>
+                  </Link>
                 </Menu.Item>
                 <Menu.Item key="3">
-                  <Icon type="desktop" />
-                  <span>
-                    <Link to="/Category">种类管理</Link>
-                  </span>
+                  <Link to="/order">
+                    <Icon type="desktop" />
+                    <span>
+                      订单管理
+                    </span>
+                  </Link>
                 </Menu.Item>
                 <Menu.Item key="4">
-                  <Icon type="desktop" />
-                  <span>
-                    <Link to="/waiter">服务者管理</Link>
-                  </span>
+                  <Link to="/Category">
+                    <Icon type="desktop" />
+                    <span>
+                      种类管理
+                    </span>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="5">
+                  <Link to="/waiter">
+                    <Icon type="desktop" />
+                    <span>
+                      服务员管理
+                    </span>
+                  </Link>
                 </Menu.Item>
                 
               </Menu>
@@ -84,7 +101,7 @@ function RouterConfig({ history }) {
                   <Route path="/waiter" exact component={WaiterPage}/>
                   <Route path="/waiterDetails" exact component={WaiterDetails}/>
                   <Route path="/orderDetails"  exact component={OrderDetails}/>
-                  
+                  <Route path="/product"  exact component={ProductPage}/>
                 </Switch>
               </Content>
             </Layout>
@@ -92,75 +109,6 @@ function RouterConfig({ history }) {
         </Layout>
       </Router>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    // <Router history={history}>
-    //   <div className={styles.container}>
-    //     <div className={styles["left-nav"]} >
-    //      <div className={styles.title}>E洁家政管理系统
-    //      </div>
-    //     </div>
-       
-    //      <ul>
-    //        <li className={styles["nav-list-item"]}>
-    //        <Link to="/customer">顾客管理 </Link></li>
-    //        <li className={styles["nav-list-item"]}>
-    //        <Link to="/address">地址管理 </Link></li>
-    //        <li className={styles["nav-list-item"]}>
-    //        <Link to="/category">种类管理 </Link></li>
-    //        <li className={styles["nav-list-item"]}>
-    //        <Link to="/order">订单管理 </Link></li>
-    //        <li className={styles["nav-list-item"]}>
-    //        <Link to="/comment">评价管理 </Link></li>
-    //        <li className={styles["nav-list-item"]}>
-    //        <Link to="/product">产品管理 </Link></li>
-    //        <li className={styles["nav-list-item"]}>
-    //        <Link to="/waiter">服务人员管理 </Link></li>
-    //      </ul>
-       
-    //      <div className={styles["right-content"]}>
-    //      <Switch>
-    //      <Route path="/" exact component={IndexPage} />
-    //      <Route path="/customer" exact component={CustomerPage} />
-    //      <Route path="/order" exact component={OrderPage} />
-    //      <Route path="/comment" exact component={CommentPage} />
-    //      <Route path="/product" exact component={ProductPage} />
-    //      <Route path="/waiter" exact component={WaiterPage} />
-    //      <Route path="/category" exact component={CategoryPage} />
-    //      <Route path="/address" exact component={AddressPage} />
-    //      </Switch>
-    //     </div>
-    //     </div>
-    // </Router>
   );
 }
 
