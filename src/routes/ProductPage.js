@@ -78,6 +78,7 @@ class ProductPage extends React.Component {
         if (err) {
             return;
         }
+        alert(JSON.stringify(values));
         // 表单校验
         axios.post("/product/insertOrUpdate",values)
         .then((result)=>{
@@ -101,6 +102,11 @@ class ProductPage extends React.Component {
       this.setState({product:record})
       this.setState({visible:true})
   }
+  //跳转
+  toDetails(record){
+    console.log(record);
+    this.props.history.push("/productDetails")
+  }
 
   // 页面渲染
   render(){
@@ -122,22 +128,27 @@ class ProductPage extends React.Component {
       dataIndex:'status'
     },{
       title:'具体图片',
-      dataIndex:'photo'
+      align:"center",
+      dataIndex:'photo',
+      render(text){
+        return (
+          <img width={40} height={40} src={"http://134.175.154.93:8888/group1/"+text}/>
+        )
+      }
     },{
       title:'所属类别',
       align:"center",
-      dataIndex:'categoryId'
+      dataIndex:'categoryId',
     },{
       title:'操作',
-      width:120,
+      width:160,
       align:"center",
       render:(text,record)=>{
         return (
           <div>
-            {/* <Button type='link' size="small" onClick={this.handleDelete.bind(this,record.id)}>删除</Button>
-            <Button type='link' size="small" onClick={this.toEdit.bind(this,record)}>修改</Button> */}
-            <Icon type="delete" theme="twoTone"  onClick={this.handleDelete.bind(this,record.id)}/>&nbsp;&nbsp;&nbsp;&nbsp;                        
-            <Icon type="edit" theme="twoTone" onClick={this.toEdit.bind(this,record)}/>
+           <Button type='link' size="small" onClick={this.handleDelete.bind(this,record.id)}>删除</Button>
+            <Button type='link' size="small" onClick={this.toEdit.bind(this,record)}>修改</Button>
+            <Button type='link' size="small" onClick={this.toDetails.bind(this,record)}>详情</Button>
           </div>
         )
       }
