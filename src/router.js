@@ -74,6 +74,14 @@ function RouterConfig({ history }) {
                     </span>
                   </Link>
                 </Menu.Item>
+                <Menu.Item key="6">
+                  <Link to="/address">
+                    <Icon type="desktop" />
+                    <span>
+                      地址管理
+                    </span>
+                  </Link>
+                </Menu.Item>
                 
               </Menu>
             </Sider>
@@ -102,6 +110,7 @@ function RouterConfig({ history }) {
                   <Route path="/waiterDetails" exact component={WaiterDetails}/>
                   <Route path="/orderDetails"  exact component={OrderDetails}/>
                   <Route path="/product"  exact component={ProductPage}/>
+                  <Route path="/address"  exact component={AddressPage}/>
                 </Switch>
               </Content>
             </Layout>

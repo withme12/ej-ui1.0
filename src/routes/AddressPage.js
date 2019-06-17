@@ -2,9 +2,12 @@ import React from 'react';
 // 引入css进行页面美化
 import styles from './CustomerPage.css'
 // 导入组件
-import {Modal,Button, Table,message,Icon} from 'antd'
+import {Modal,Button, Table,message,Icon,Select} from 'antd'
 import axios from '../utils/axios'
 import AddressForm from './AddressForm'
+
+const {Option}=Select
+
 
 
 // 组件类必须要继承React.Component，是一个模块，顾客管理子功能
@@ -19,6 +22,8 @@ class AddressPage extends React.Component {
       customer:{}
     }
   }
+
+
   // 在生命周期钩子函数中调用重载数据
   componentDidMount(){
     this.reloadData();
@@ -83,8 +88,17 @@ class AddressPage extends React.Component {
       if (err) {
         return;
       }
+      let obj={
+        id:values.id,
+        province:values.addr.shift(),
+        city:values.addr.shift(),
+        area:values.addr.shift(),
+        address:values.address,
+        telephone:values.telephone,
+        
+      }
       // 表单校验完成后与后台通信进行保存
-      axios.post("/address/insertOrUpdate",values)
+      axios.post("/address/insertOrUpdate",obj)
       .then((result)=>{
         message.success(result.statusText)
         // 重置表单
@@ -100,6 +114,9 @@ class AddressPage extends React.Component {
   saveFormRef = formRef => {
     this.formRef = formRef;
   };
+
+  
+
   // 去添加
   toAdd(){
     // 将默认值置空,模态框打开
@@ -107,10 +124,17 @@ class AddressPage extends React.Component {
   }
   // 去更新
   toEdit(record){
-    // 更前先先把要更新的数据设置到state中
-    this.setState({customer:record})
-    // 将record值绑定表单中
-    this.setState({visible:true})
+      
+        const obj = {
+          id: record.id,
+          addr: [record.province, record.city, record.area],
+          address: record.address,
+          telephone: record.telephone
+      }
+      // 更前先先把要更新的数据设置到state中
+      this.setState({customer:obj})
+      // 将record值绑定表单中
+      this.setState({visible:true})
   }
 
   // 组件类务必要重写的方法，表示页面渲染
@@ -120,7 +144,7 @@ class AddressPage extends React.Component {
       title:'省',
       dataIndex:'province'
     },{
-      title:'城市',
+      title:'市',
       dataIndex:'city'
     }
     ,{
@@ -128,7 +152,7 @@ class AddressPage extends React.Component {
         dataIndex:'area'
       },
       {
-        title:'地址',
+        title:'详细地址',
         dataIndex:'address'
       },
       {
@@ -169,7 +193,7 @@ class AddressPage extends React.Component {
         <div className={styles.title}>地址管理</div>
         <div className={styles.btns}>
           <Button onClick={this.toAdd.bind(this)}>添加</Button> &nbsp;
-          <Button onClick={this.handleBatchDelete.bind(this)}>批量删除</Button> &nbsp;
+          <Button  type="danger" onClick={this.handleBatchDelete.bind(this)}>批量删除</Button> &nbsp;
           <Button type="link">导出</Button>
         </div>
         <Table 
