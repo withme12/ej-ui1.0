@@ -111,20 +111,23 @@ class OrderPage extends React.Component {
   }
   // 去更新
   toEdit(record){
-    // 更前先先把要更新的数据设置到state中
+    // 更新前先把要更新的数据设置到state中
     this.setState({order:record})
     // 将record值绑定表单中
     this.setState({visible:true})
+    
   }
 
 
   toDetails(record){
-    this.setState({order:record})
-   console.log(record);
-   this.props.history.push("/orderDetails")
-  
- 
-}
+    console.log(record);
+    //跳转 react-router
+    this.props.history.push({
+      pathname:"/orderDetails",
+      payload:record
+    })
+  }
+
   // 组件类务必要重写的方法，表示页面渲染
   render(){
     // 变量定义
