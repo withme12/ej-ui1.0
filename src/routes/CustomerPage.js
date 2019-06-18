@@ -97,11 +97,12 @@ class CustomerPage extends React.Component{
         this.setState({visible:true})
     }
     toDetails(record){
-         this.setState({customer:record})
         console.log(record);
-        this.props.history.push("/customerDetails")
-       
-      
+        //跳转 react-router
+        this.props.history.push({
+          pathname:"/customerDetails",
+          payload:record
+        })
     }
     render(){
         let columns=[{
