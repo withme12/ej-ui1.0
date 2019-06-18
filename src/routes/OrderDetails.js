@@ -1,23 +1,91 @@
 import React from 'react'
-import {Button,Tabs} from 'antd'
-import { Router, Route, Switch ,Link} from 'dva/router';
+import {Button,Tabs,Table} from 'antd'
+import axios from '../utils/axios';
+import OrderForm from './OrderForm.js'
+
 class OrderDetails extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      order:{},
+      orderLine:[]
+      
+    }
+  }
+
+  componentDidMount(){
+    let payload = this.props.location.payload;
+    if(payload){
+      this.setState({order:payload})
+      
+      this.loadOrders();
+    } else {
+      this.props.history.push("/order")
+    }
+  }
+ 
+   //加载订单信息
+   loadOrders(){
+    axios.get("/order_line/findOrderDetails",{
+      params:{id:this.props.location.payload.id}
+    })
+    .then((result)=>{
+      this.setState({
+        orderLine:result.data
+      })
+    })
+  }
+
+
 
   render(){
     const { TabPane } = Tabs;
-
+    let columns = [{
+      title:'产品名称',
+      dataIndex:'name',
+    
+    },{
+      title:'下单时间',
+      dataIndex:'order_time'
+    },{
+      title:'产品数量',
+      dataIndex:'total'
+    },{
+      title:'产品描述',
+      dataIndex:'description'
+    },{
+      title:'产品单价',
+      dataIndex:'price'
+    },{
+      title:'产品图片',
+      dataIndex:'photo'
+    }]
     function callback(key) {
       console.log(key);
     }
+    
 
     return (
       <div>
-          <Button type="link" onClick={()=>{this.props.history.goBack()}}>返回</Button>
+        <Button type="link" onClick={()=>{this.props.history.goBack()}}>返回</Button>
         <Tabs defaultActiveKey="1" onChange={callback}>
-          <TabPane tab="订单详情" key="1">
-        
+          
+          <TabPane tab="订单项" key="1">
+          
           </TabPane>
+        
+          
         </Tabs>
+        <Table 
+          bordered
+          rowKey="id"
+          size="small"
+          loading={this.state.loading}
+          columns={columns}
+          dataSource={this.state.orderLine}
+         />
+          
         
       </div>
     )
@@ -25,5 +93,3 @@ class OrderDetails extends React.Component {
 }
 
 export default OrderDetails;
-
-
