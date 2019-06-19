@@ -123,7 +123,7 @@ class CustomerPage extends React.Component{
         },
         {
             title:'操作',
-            width:120,
+            width:150,
             align:"center",
             render:(text,record)=>{
                 return (
@@ -131,7 +131,7 @@ class CustomerPage extends React.Component{
                         {/* <Button type ='link' size="small" onClick={this.handleDelete.bind(this,record.id)}>删除</Button>
                         <Button type ='link' size="small" onClick={this.toEdit.bind(this,record)}>修改</Button> */}
                         <Icon type="delete" theme="twoTone"  onClick={this.handleDelete.bind(this,record.id)}/>&nbsp;&nbsp;&nbsp;&nbsp;                        
-                        <Icon type="edit" theme="twoTone" onClick={this.toEdit.bind(this,record)}/>
+                        <Icon type="edit" theme="twoTone" onClick={this.toEdit.bind(this,record)}/>&nbsp;&nbsp;
                         <Button type='link' size="small" onClick={this.toDetails.bind(this,record)}>详情</Button>
                     </div>
                 )

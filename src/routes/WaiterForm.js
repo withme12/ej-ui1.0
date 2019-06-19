@@ -26,7 +26,7 @@ class CustomerForm extends React.Component {
     return (
       <Modal
           visible={visible}
-          title="添加顾客信息"
+          title="顾客信息"
           okText="提交"
           onCancel={onCancel}
           onOk={onCreate}

@@ -116,14 +116,20 @@ class WaiterPage extends React.Component {
     this.setState({visible:true})
   }
   toDetails(record){
-    this.setState({customer:record})
-   console.log(record);
-   this.props.history.push("/waiterDetails")
+    console.log(record);
+        //跳转 react-router
+        this.props.history.push({
+          pathname:"/waiterDetails",
+          payload:record
+        })
   }
   // 组件类务必要重写的方法，表示页面渲染
   render(){
     // 变量定义
     let columns = [{
+      title:'id',
+      dataIndex:'id'
+    },{
       title:'姓名',
       dataIndex:'realname'
     },{
@@ -134,8 +140,13 @@ class WaiterPage extends React.Component {
       align:"center",
       dataIndex:'status'
     },{
+      title:'照片',
+      align:"center",
+      dataIndex:'photo'
+    },
+    {
       title:'操作',
-      width:120,
+      width:150,
       align:"center",
       render:(text,record)=>{
         return (
@@ -143,7 +154,7 @@ class WaiterPage extends React.Component {
             {/* <Button type='link' size="small" onClick={this.handleDelete.bind(this,record.id)}>删除</Button>
             <Button type='link' size="small" onClick={this.toEdit.bind(this,record)}>修改</Button> */}
             <Icon type="delete" theme="twoTone"  onClick={this.handleDelete.bind(this,record.id)}/>&nbsp;&nbsp;&nbsp;&nbsp;                        
-            <Icon type="edit" theme="twoTone" onClick={this.toEdit.bind(this,record)}/>
+            <Icon type="edit" theme="twoTone" onClick={this.toEdit.bind(this,record)}/>&nbsp;&nbsp;  
             <Button type='link' size="small" onClick={this.toDetails.bind(this,record)}>详情</Button>
           </div>
         )
