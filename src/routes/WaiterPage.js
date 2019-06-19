@@ -142,9 +142,13 @@ class WaiterPage extends React.Component {
     },{
       title:'照片',
       align:"center",
-      dataIndex:'photo'
-    },
-    {
+      dataIndex:'photo',
+      render(text){
+            return (
+            <img width={35} height={35} src={"http://134.175.154.93:8888/group1/"+text}/>
+        )
+    }
+    },{
       title:'操作',
       width:150,
       align:"center",
@@ -178,8 +182,8 @@ class WaiterPage extends React.Component {
       <div className={styles.waiter}>
         <div className={styles.title}>服务员管理</div>
         <div className={styles.btns}>
-          <Button onClick={this.toAdd.bind(this)}>添加</Button> &nbsp;
-          <Button onClick={this.handleBatchDelete.bind(this)}>批量删除</Button> &nbsp;
+          <Button onClick={this.toAdd.bind(this)} type="primary">添加</Button> &nbsp;
+          <Button onClick={this.handleBatchDelete.bind(this)} type="danger">批量删除</Button> &nbsp;
           <Button type="link">导出</Button>
         </div>
         <Table 
