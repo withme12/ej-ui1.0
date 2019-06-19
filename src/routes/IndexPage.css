@@ -6,14 +6,46 @@
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: 1.7rem;
   font-weight: normal;
   letter-spacing: -1px;
 }
 
-.welcome {
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 160px;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
+}
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
+
+
+.welcome1 {
   height: 328px;
-  background: url(../assets/yay.jpg) no-repeat center 0;
+  background: url(../assets/5.jpg) no-repeat center 0;
+  background-size: 388px 328px;
+}
+.welcome2 {
+  height: 328px;
+  background: url(../assets/1.jpg) no-repeat center 0;
+  background-size: 388px 328px;
+}
+.welcome3 {
+  height: 328px;
+  background: url(../assets/3.jpg) no-repeat center 0;
+  background-size: 388px 328px;
+}
+.welcome4 {
+  height: 328px;
+  background: url(../assets/4.jpg) no-repeat center 0;
+  background-size: 388px 328px;
+}
+.welcome5 {
+  height: 328px;
+  background: url(../assets/2.jpg) no-repeat center 0;
   background-size: 388px 328px;
 }
 

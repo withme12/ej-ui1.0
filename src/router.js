@@ -8,7 +8,7 @@ import ProductPage from './routes/ProductPage';
 import WaiterPage from './routes/WaiterPage';
 import CategoryPage from './routes/CategoryPage';
 import AddressPage from './routes/AddressPage';
-import styles from './router.css'
+import styles from './router.css';
 import OrderLinePage from './routes/OrderLinePage';
 import {Layout,Menu,Breadcrumb,Icon}from 'antd' 
 import CustomerDetails from './routes/CustomerDetails'
