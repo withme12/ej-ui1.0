@@ -87,7 +87,7 @@ class CustomerDetails extends React.Component {
 
     return (
       <div>
-        <Button type="link" onClick={()=>{this.props.history.goBack()}}>返回</Button>
+        <Button type="link" onClick={()=>{this.props.history.goBack()}}><Icon type="rollback" /></Button>
         <Tabs defaultActiveKey="1" onChange={callback}>
           <TabPane tab="基本信息" key="1">
             <p>{this.state.customer.realname}</p>
