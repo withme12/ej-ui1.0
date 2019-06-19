@@ -73,6 +73,7 @@ class CustomerPage extends React.Component{
         if (err) {
             return;
         }
+       
         // 表单校验
         axios.post("/customer/insertOrUpdate",values)
         .then((result)=>{
@@ -145,7 +146,13 @@ class CustomerPage extends React.Component{
             dataIndex:'status'
         },{
             title:'头像',
-            dataIndex:'photo'
+            align:"center",
+            dataIndex:'photo',
+            render(text){
+                return (
+                <img width={35} height={35} src={"http://134.175.154.93:8888/group1/"+text}/>
+            )
+      }
         },
         {
             title:'操作',
@@ -179,8 +186,8 @@ class CustomerPage extends React.Component{
             <div className={styles.customer}>
                 <div className ={styles.title}> 顾客管理</div>
                 <div className ={styles.btns}>
-                    <Button onClick={this.toAdd.bind(this)}>添加</Button>&nbsp;
-                    <Button onClick={this.handleBatchDelete.bind(this)}>批量删除</Button>&nbsp;
+                    <Button onClick={this.toAdd.bind(this)} type='primary'>添加</Button>&nbsp;
+                    <Button onClick={this.handleBatchDelete.bind(this)} type='danger'>批量删除</Button>&nbsp;
                     <Button type="link">导出</Button>
                     <Search 
                        placeholder="顾客ID查询"

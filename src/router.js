@@ -8,13 +8,13 @@ import ProductPage from './routes/ProductPage';
 import WaiterPage from './routes/WaiterPage';
 import CategoryPage from './routes/CategoryPage';
 import AddressPage from './routes/AddressPage';
-import styles from './router.css'
+import styles from './router.css';
 import OrderLinePage from './routes/OrderLinePage';
 import {Layout,Menu,Breadcrumb,Icon}from 'antd' 
 import CustomerDetails from './routes/CustomerDetails'
 import WaiterDetails from './routes/WaiterDetails'
 import  OrderDetails from './routes/OrderDetails'
-
+import { Avatar } from 'antd';
 function RouterConfig({ history }) {
   const {Content,Sider,Header}=Layout;
   const {SubMenu}=Menu;
@@ -22,8 +22,8 @@ function RouterConfig({ history }) {
 <Router history={history}>
         <Layout>
           <Header className="header">
-            <div className="logo" style={{color:"#DCB5FF",fontWeight:"bold",fontSize:"18px"}}>
-              e洁家政后台管理系统  
+            <div className="logo" style={{color:"#DCB5FF",fontWeight:"bold",fontSize:"24px"}}>
+            <Avatar src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1854786735,1316474756&fm=26&gp=0.jpg" />       e洁家政后台管理系统  
             </div>
           </Header>
           <Layout>
@@ -86,17 +86,47 @@ function RouterConfig({ history }) {
               </Menu>
             </Sider>
             <Layout style={{ padding: '0 24px 24px' }}>
-              <Breadcrumb style={{ margin: '16px 0' }}>
-                <Breadcrumb.Item>Home</Breadcrumb.Item>
-                <Breadcrumb.Item>List</Breadcrumb.Item>
-                <Breadcrumb.Item>App</Breadcrumb.Item>
+              <Breadcrumb style={{ margin: '10px 0',color:"#00DB00" }}></Breadcrumb>
+              <Breadcrumb>
+                <Breadcrumb.Item><a href="/#/">主页</a></Breadcrumb.Item>
+                <Breadcrumb.Item>
+                  <a href="#/customer">顾客管理</a>
+                </Breadcrumb.Item>
+                <Breadcrumb.Item>
+                  <a href="#/product">产品管理</a>
+                </Breadcrumb.Item>
+             
               </Breadcrumb>
+
+
+
+
+
+
+              {/*  */}
+                    {/* <div class="crumbs">
+                  <el-breadcrumb separator="/">
+                {/* <el-breadcrumb-item :to="{path:'/main/home'}">首页</el-breadcrumb-item> */}
+                {/* <el-breadcrumb-item><a href="/#/">首页/</a></el-breadcrumb-item>
+                <el-breadcrumb-item><a href="/#/customer">人员管理/</a></el-breadcrumb-item>
+
+                </el-breadcrumb> */}
+
+                    {/* </div> */} 
+          
+
+
+                {/* // <Breadcrumb.Item>Home</Breadcrumb.Item>
+                // <Breadcrumb.Item>List</Breadcrumb.Item>
+                // <Breadcrumb.Item>App</Breadcrumb.Item> */}
+                
+              {/* </Breadcrumb> */}
               <Content
                 style={{
                   background: '#D1E9E9',
                   margin: 0,
                   padding:'1em',
-                  minHeight: 280,
+                  minHeight: 580,
                 }}
               >
                 <Switch>

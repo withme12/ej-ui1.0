@@ -62,12 +62,17 @@ class WaiterDetails extends React.Component {
 
     return (
       <div>
-          <Button type="link" onClick={()=>{this.props.history.goBack()}}>返回</Button>
+          <Button type="link" onClick={()=>{this.props.history.goBack()}}><Icon type="rollback" /></Button>
         <Tabs defaultActiveKey="1" onChange={callback}>
           <TabPane tab="基本信息" key="1">
             <p>姓&nbsp;&nbsp;名：&nbsp;{this.state.waiter.realname}</p>
             <p>电&nbsp;&nbsp;话：&nbsp;{this.state.waiter.telephone}</p>
-            <img alt="图片找不到..." src={this.state.waiter.photo}/>
+            <tr>
+               <td valign="top">照&nbsp;&nbsp;片：&nbsp;</td>
+                <td>
+                    <img alt="图片未找到..." width={200} height={200} src={"http://134.175.154.93:8888/group1/"+this.state.waiter.photo}/>
+                </td>
+            </tr>
           </TabPane>
           <TabPane tab="历史订单" key="2">
               <div>
