@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './CustomerPage.css'
-import {Modal,Button,Table,message,Icon} from 'antd'
+import {Modal,Button,Table,message,Icon,Input} from 'antd'
 import axios from  '../utils/axios'
 import CustomerForm from './CustomerForm.js'
-
+const Search = Input.Search;
 
 //组件类必须继承React.Component
 class CustomerPage extends React.Component{
@@ -104,6 +104,32 @@ class CustomerPage extends React.Component{
           payload:record
         })
     }
+
+
+     //模糊查询
+  handleSearch = (value) => {
+    console.log(value)
+      if(value==''||value==null||value==undefined){
+        this.reloadData()
+      }
+      axios.get('customer/findCustomerById', { params: { id: value } })
+        .then((result) => {
+          
+          if (200 === result.status) {
+            let temp = [];
+            if(result.data!=undefined){
+              console.log(1)
+              temp.push(result.data)
+            }
+            
+        
+            this.setState({ list: temp })
+  
+          }
+        })
+    }
+
+
     render(){
         let columns=[{
             title:'id',
@@ -156,6 +182,13 @@ class CustomerPage extends React.Component{
                     <Button onClick={this.toAdd.bind(this)}>添加</Button>&nbsp;
                     <Button onClick={this.handleBatchDelete.bind(this)}>批量删除</Button>&nbsp;
                     <Button type="link">导出</Button>
+                    <Search 
+                       placeholder="顾客ID查询"
+            
+                       onSearch={value => this.handleSearch(value)}
+            
+                       style={{ width: 200,  float:'right' }}
+                     />
                 </div>
                 <Table
                 bordered

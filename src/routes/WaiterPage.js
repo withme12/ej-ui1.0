@@ -2,12 +2,12 @@ import React from 'react';
 // 引入css进行页面美化
 import styles from './WaiterPage.css'
 // 导入组件
-import {Modal,Button, Table,message,Icon} from 'antd'
+import {Modal,Button, Table,message,Icon,Input} from 'antd'
 import axios from '../utils/axios'
 
 import WaiterForm from './WaiterForm'
 
-
+const Search = Input.Search;
 
 // 组件类必须要继承React.Component，是一个模块，服务员管理子功能
 class WaiterPage extends React.Component {
@@ -123,6 +123,31 @@ class WaiterPage extends React.Component {
           payload:record
         })
   }
+
+
+  //模糊查询
+  handleSearch = (value) => {
+    console.log(value)
+      if(value==''||value==null||value==undefined){
+        this.reloadData()
+      }
+      axios.get('waiter/findWaiterById', { params: { id: value } })
+        .then((result) => {
+          
+          if (200 === result.status) {
+            let temp = [];
+            if(result.data!=undefined){
+              console.log(1)
+              temp.push(result.data)
+            }
+            
+        
+            this.setState({ list: temp })
+  
+          }
+        })
+    }
+
   // 组件类务必要重写的方法，表示页面渲染
   render(){
     // 变量定义
@@ -181,6 +206,13 @@ class WaiterPage extends React.Component {
           <Button onClick={this.toAdd.bind(this)}>添加</Button> &nbsp;
           <Button onClick={this.handleBatchDelete.bind(this)}>批量删除</Button> &nbsp;
           <Button type="link">导出</Button>
+          <Search 
+            placeholder="服务员ID查询"
+            
+            onSearch={value => this.handleSearch(value)}
+            
+            style={{ width: 200,  float:'right' }}
+          />
         </div>
         <Table 
           bordered

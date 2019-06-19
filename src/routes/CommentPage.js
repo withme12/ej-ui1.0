@@ -3,8 +3,6 @@ import styles from './CommentPage.css'
 import {Modal,Button,Table,message,Icon} from 'antd'
 import axios from  '../utils/axios'
 import CommentForm from './CommentForm'
-
-
 //组件类必须继承React.Component
 class CommentPage extends React.Component{
     constructor(){
