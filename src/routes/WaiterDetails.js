@@ -70,7 +70,7 @@ class WaiterDetails extends React.Component {
             <tr>
                <td valign="top">照&nbsp;&nbsp;片：&nbsp;</td>
                 <td>
-                    <img width={200} height={200} src={"http://134.175.154.93:8888/group1/"+this.state.waiter.photo}/>
+                    <img alt="图片未找到..." width={200} height={200} src={"http://134.175.154.93:8888/group1/"+this.state.waiter.photo}/>
                 </td>
             </tr>
           </TabPane>
