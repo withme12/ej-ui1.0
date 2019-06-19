@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button,Tabs,Table} from 'antd'
+import {Button,Tabs,Table,Icon} from 'antd'
 import axios from '../utils/axios';
 import OrderForm from './OrderForm.js'
 
@@ -59,7 +59,12 @@ class OrderDetails extends React.Component {
       dataIndex:'price'
     },{
       title:'产品图片',
-      dataIndex:'photo'
+      dataIndex:'photo',
+      render(text){
+        return (
+        <img alt="未找到..." width={35} height={35} src={"http://134.175.154.93:8888/group1/"+text}/>
+    )
+    }
     }]
     function callback(key) {
       console.log(key);
@@ -68,7 +73,7 @@ class OrderDetails extends React.Component {
 
     return (
       <div>
-        <Button type="link" onClick={()=>{this.props.history.goBack()}}>返回</Button>
+        <Button type="link" onClick={()=>{this.props.history.goBack()}}><Icon type="rollback" /></Button>
         <Tabs defaultActiveKey="1" onChange={callback}>
           
           <TabPane tab="订单项" key="1">

@@ -14,6 +14,7 @@ import {Layout,Menu,Breadcrumb,Icon}from 'antd'
 import CustomerDetails from './routes/CustomerDetails'
 import WaiterDetails from './routes/WaiterDetails'
 import  OrderDetails from './routes/OrderDetails'
+import  CategoryDetails from './routes/CategoryDetails'
 import { Avatar } from 'antd';
 function RouterConfig({ history }) {
   const {Content,Sider,Header}=Layout;
@@ -139,6 +140,7 @@ function RouterConfig({ history }) {
                   <Route path="/waiter" exact component={WaiterPage}/>
                   <Route path="/waiterDetails" exact component={WaiterDetails}/>
                   <Route path="/orderDetails"  exact component={OrderDetails}/>
+                  <Route path="/categoryDetails"  exact component={CategoryDetails}/>
                   <Route path="/product"  exact component={ProductPage}/>
                   <Route path="/address"  exact component={AddressPage}/>
                 </Switch>

@@ -131,7 +131,12 @@ class OrderPage extends React.Component {
   // 组件类务必要重写的方法，表示页面渲染
   render(){
     // 变量定义
-    let columns = [{
+    let columns = [
+      {
+        title:'序号',
+        width:80,
+        dataIndex:'id'
+      },{
       title:'下单时间',
       dataIndex:'orderTime',
       sorter:(a,b)=>a.orderTime-b.orderTime
@@ -140,7 +145,7 @@ class OrderPage extends React.Component {
       dataIndex:'total'
     },{
       title:'操作',
-      width:120,
+      width:150,
       align:"center",
       render:(text,record)=>{
         return (
@@ -170,8 +175,8 @@ class OrderPage extends React.Component {
       <div className={styles.order}>
         <div className={styles.title}>订单管理</div>
         <div className={styles.btns}>
-          <Button onClick={this.toAdd.bind(this)}>添加</Button> &nbsp;
-          <Button onClick={this.handleBatchDelete.bind(this)}>批量删除</Button> &nbsp;
+          <Button onClick={this.toAdd.bind(this)} type="primary">添加</Button> &nbsp;
+          <Button onClick={this.handleBatchDelete.bind(this)} type="danger">批量删除</Button> &nbsp;
           <Button type="link">导出</Button>
         </div>
         <Table 

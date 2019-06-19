@@ -90,7 +90,7 @@ class CategoryPage extends React.Component{
     saveFormRef = formRef => {
         this.formRef = formRef;
     };
-    // 去添加
+    // 去添加S
     toAdd(){
         this.setState({category:{},visible:true})   // 将默认值置空,模态框打开
     }
@@ -100,6 +100,14 @@ class CategoryPage extends React.Component{
         this.setState({category:record})
         // 将record值绑定表单中
         this.setState({visible:true})
+    }
+    toDetails(record){
+        console.log(record);
+        //跳转 react-router
+        this.props.history.push({
+          pathname:"/categoryDetails",
+          payload:record
+        })
     }
     render(){
         let columns=[{
@@ -116,7 +124,7 @@ class CategoryPage extends React.Component{
             dataIndex:'parentId'
         },{
             title:'操作',
-            width:120,
+            width:150,
             align:"center",
             render:(text,record)=>{
                 return (
@@ -124,7 +132,8 @@ class CategoryPage extends React.Component{
                         {/* <Button type ='link' size="small" onClick={this.handleDelete.bind(this,record.id)}>删除</Button>
                         <Button type ='link' size="small" onClick={this.toEdit.bind(this,record)}>修改</Button> */}
                         <Icon type="delete" theme="twoTone"  onClick={this.handleDelete.bind(this,record.id)}/>&nbsp;&nbsp;&nbsp;&nbsp;                        
-                        <Icon type="edit" theme="twoTone" onClick={this.toEdit.bind(this,record)}/>
+                        <Icon type="edit" theme="twoTone" onClick={this.toEdit.bind(this,record)}/>&nbsp;&nbsp; 
+                        <Button type='link' size="small" onClick={this.toDetails.bind(this,record)}>详情</Button>
                     </div>
                 )
             }
@@ -144,8 +153,8 @@ class CategoryPage extends React.Component{
             <div className={styles.category}>
                 <div className ={styles.title}>家政类别管理</div>
                 <div className ={styles.btns}>
-                    <Button onClick={this.toAdd.bind(this)}>添加</Button>&nbsp;
-                    <Button onClick={this.handleBatchDelete.bind(this)}>批量删除</Button>&nbsp;
+                    <Button onClick={this.toAdd.bind(this)} type='primary'>添加</Button>&nbsp;
+                    <Button onClick={this.handleBatchDelete.bind(this)} type='danger'>批量删除</Button>&nbsp;
                     <Button type="link">导出</Button>
                 </div>
                 <Table
