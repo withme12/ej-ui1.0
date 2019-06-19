@@ -2,6 +2,7 @@ import React from 'react'
 import {Button,Tabs,Table,message,Icon,Modal} from 'antd'
 import axios from '../utils/axios';
 import styles from './CustomerPage.css'
+import Sider from 'antd/lib/layout/Sider';
 
 class CustomerDetails extends React.Component {
 
@@ -66,7 +67,9 @@ class CustomerDetails extends React.Component {
     //           name: record.name,
     //         }),
     //       };
+
           //顾客的地址信息
+
           let columnsAdds=[{
             title:'省',
             dataIndex:'province'
@@ -107,12 +110,17 @@ class CustomerDetails extends React.Component {
 
     return (
       <div>
-        <Button type="link" onClick={()=>{this.props.history.goBack()}}>返回</Button>
+        <Button type="link" onClick={()=>{this.props.history.goBack()}}><Icon type="rollback" /></Button>
         <Tabs defaultActiveKey="1" onChange={callback}>
           <TabPane tab="基本信息" key="1">
             <p>姓&nbsp;&nbsp;名：&nbsp;{this.state.customer.realname}</p>
             <p>电&nbsp;&nbsp;话：&nbsp;{this.state.customer.telephone}</p>
-            <img alt="图片找不到..." src={this.state.customer.photo}/>
+             <tr>
+               <td valign="top">头&nbsp;&nbsp;像：&nbsp;</td>
+                <td>
+                    <img width={200} height={200} src={"http://134.175.154.93:8888/group1/"+this.state.customer.photo}/>
+                </td>
+            </tr>
           </TabPane>
           <TabPane tab="服务地址" key="2">
               <div >
