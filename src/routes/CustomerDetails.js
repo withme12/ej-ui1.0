@@ -118,7 +118,7 @@ class CustomerDetails extends React.Component {
              <tr>
                <td valign="top">头&nbsp;&nbsp;像：&nbsp;</td>
                 <td>
-                    <img width={200} height={200} src={"http://134.175.154.93:8888/group1/"+this.state.customer.photo}/>
+                    <img alt="图片未找到..." width={200} height={200} src={"http://134.175.154.93:8888/group1/"+this.state.customer.photo}/>
                 </td>
             </tr>
           </TabPane>
