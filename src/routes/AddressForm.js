@@ -118,7 +118,6 @@ class AddressForm extends React.Component {
     const { getFieldDecorator } = form;
     // 将表单中没有出现的值做一个双向数据绑定
     getFieldDecorator("id");
-    getFieldDecorator("customer_id");
     return (
       <Modal
           visible={visible}
@@ -141,6 +140,11 @@ class AddressForm extends React.Component {
             <Form.Item label="电话">
               {getFieldDecorator('telephone', {
                 rules: [{ required: true, message: '请输入电话!' }],
+              })(<Input />)}
+            </Form.Item>
+            <Form.Item label="顾客ID">
+              {getFieldDecorator('customerId', {
+                rules: [{ required: true, message: '请输入顾客ID!' }],
               })(<Input />)}
             </Form.Item>
            

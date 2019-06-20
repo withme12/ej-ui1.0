@@ -95,6 +95,7 @@ class AddressPage extends React.Component {
         area:values.addr.shift(),
         address:values.address,
         telephone:values.telephone,
+        customerId:values.customerId,
         
       }
       // 表单校验完成后与后台通信进行保存
@@ -129,7 +130,8 @@ class AddressPage extends React.Component {
           id: record.id,
           addr: [record.province, record.city, record.area],
           address: record.address,
-          telephone: record.telephone
+          telephone: record.telephone,
+          customerId:record.customerId
       }
       // 更前先先把要更新的数据设置到state中
       this.setState({customer:obj})
@@ -159,6 +161,9 @@ class AddressPage extends React.Component {
       title:'电话',
       align:"center",
       dataIndex:'telephone'
+    },{
+      title:'顾客ID',
+      dataIndex:'customerId'
     },{
       title:'操作',
       width:120,
