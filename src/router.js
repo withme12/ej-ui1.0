@@ -23,8 +23,8 @@ function RouterConfig({ history }) {
 <Router history={history}>
         <Layout>
           <Header className="header">
-            <div className="logo" style={{color:"#DCB5FF",fontWeight:"bold",fontSize:"24px"}}>
-            <Avatar src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1854786735,1316474756&fm=26&gp=0.jpg" />       e洁家政后台管理系统  
+            <div className="logo" style={{color:"#DCB5FF",fontWeight:"bold",fontSize:"30px",fontFamily:"华文彩云"}}>
+            <Avatar src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1854786735,1316474756&fm=26&gp=0.jpg" />&nbsp;e洁家政后台管理系统  
             </div>
           </Header>
           <Layout>
@@ -37,7 +37,7 @@ function RouterConfig({ history }) {
               >
                 <Menu.Item key="1" >
                   <Link to="/customer">
-                    <Icon type="pie-chart" />
+                    <Icon type="user" />
                     <span>
                       顾客管理
                     </span>
@@ -45,7 +45,7 @@ function RouterConfig({ history }) {
                 </Menu.Item>
                 <Menu.Item key="2" >
                   <Link to="/product">
-                    <Icon type="pie-chart" />
+                    <Icon type="skin" />
                     <span>
                       产品管理
                     </span>
@@ -61,7 +61,7 @@ function RouterConfig({ history }) {
                 </Menu.Item>
                 <Menu.Item key="4">
                   <Link to="/Category">
-                    <Icon type="desktop" />
+                  <Icon type="apartment" />
                     <span>
                       种类管理
                     </span>
@@ -69,7 +69,7 @@ function RouterConfig({ history }) {
                 </Menu.Item>
                 <Menu.Item key="5">
                   <Link to="/waiter">
-                    <Icon type="desktop" />
+                    <Icon type="pie-chart" />
                     <span>
                       服务员管理
                     </span>
@@ -77,7 +77,7 @@ function RouterConfig({ history }) {
                 </Menu.Item>
                 <Menu.Item key="6">
                   <Link to="/address">
-                    <Icon type="desktop" />
+                    <Icon type="compass" />
                     <span>
                       地址管理
                     </span>
