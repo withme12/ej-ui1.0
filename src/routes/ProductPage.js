@@ -109,22 +109,25 @@ class ProductPage extends React.Component {
   console.log(value)
     if(value==''||value==null||value==undefined){
       this.reloadData()
-    }
-    axios.get('product/findProductById', { params: { id: value } })
+    }else{
+    axios.post('product/query',{ name:value} )
       .then((result) => {
         
-        if (200 === result.status) {
-          let temp = [];
-          if(result.data!=undefined){
-            console.log(1)
-            temp.push(result.data)
-          }
-          
-      
-          this.setState({ list: temp })
+        if (200 === result.status) 
+          {
+            // let temp = [];
+            
+            
+            // if(result.data!=undefined)
+            // {
+            //   console.log(1)
+              
+            // }temp.push(result.data)
+            this.setState({ list: result.data })
 
-        }
+          }
       })
+    }
   }
 
 
@@ -196,7 +199,7 @@ class ProductPage extends React.Component {
           <Button onClick={this.handleBatchDelete.bind(this)} type="danger">批量删除</Button> &nbsp;
           <Button type="link">导出</Button>
           <Search 
-            placeholder="服务产品ID查询"
+            placeholder="根据产品名称查询"
             
             onSearch={value => this.handleSearch(value)}
             
